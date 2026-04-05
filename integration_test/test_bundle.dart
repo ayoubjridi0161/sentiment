@@ -83,3 +83,7 @@ Future<void> main() async {
 
   await appService.testExecutionCompleted;
 }
+
+void printGroupStructure(DartGroupEntry group, [String indent = '']) {
+  print('$indent${group.name}');
+}

@@ -1,0 +1,109 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Generate code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - name: Analyze
+        run: flutter analyze --fatal-infos --fatal-warnings
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Generate code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - name: Run unit tests
+        run: flutter test --coverage
+
+  build_android:
+    name: Build APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [analyze, test]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Generate code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - name: Build APK (Dev)
+        run: flutter build apk --flavor=dev --dart-define=flavor=dev --debug
+      
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-dev-debug.apk
+          path: build/app/outputs/flutter-apk/app-dev-debug.apk
+          if-no-files-found: ignore
+
+  build_ios:
+    name: Build iOS
+    runs-on: macos-latest
+    timeout-minutes: 30
+    needs: [analyze, test]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Generate code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - name: Build iOS (Dev)
+        run: flutter build ios --flavor=dev --dart-define=flavor=dev --debug --no-codesign

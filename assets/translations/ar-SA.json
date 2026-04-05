@@ -1,0 +1,25 @@
+{
+  "homePageTitle": "الصفحة الرئيسية",
+  "searchPageTitle": "بحث",
+  "forecast": "التنبؤ",
+  "favCitiesAppearHere": "ستظهر حالة الطقس لمدينك المفضلة هنا. ابحث عن المدن لإضافتها إلى المفضلة.",
+  "startTypingToSearch": "ابدأ الكتابة للبحث",
+  "searchResultsAppearHere": "ظهور نتائج البحث هنا...",
+  "noResultsFound": "لم يتم العثور على نتائج...",
+  "dynamicTheme": "المظهر الديناميكي",
+  "emotion": {
+    "input_label": "ما الذي يشغل بالك؟",
+    "input_hint": "أدخل النص لتحليل المشاعر...",
+    "analyze_button": "تحليل المشاعر",
+    "confidence_label": "درجة الثقة",
+    "analyzed_text_label": "النص المحلل",
+    "datetime_format": "dd MMM، yyyy - hh:mm a",
+    "history_title": "سجل التحليل",
+    "history_empty": "لا يوجد سجل تحليل حتى الآن",
+    "clear_history_tooltip": "حذف كل السجل",
+    "clear_button": "حذف",
+    "cancel_button": "إلغاء",
+    "confirm_clear_title": "حذف السجل؟",
+    "confirm_clear_message": "سيؤدي هذا إلى حذف جميع سجل تحليل المشاعر. لا يمكن التراجع عن هذا الإجراء."
+  }
+}

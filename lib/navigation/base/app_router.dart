@@ -7,6 +7,7 @@ import 'package:flutter_template/presentation/destinations/weather/home/home_pag
 import 'package:flutter_template/presentation/destinations/weather/home/home_screen.dart';
 import 'package:flutter_template/presentation/destinations/weather/search/search_page.dart';
 import 'package:flutter_template/presentation/destinations/weather/search/search_screen.dart';
+import 'package:flutter_template/presentation/destinations/sentiment/sentiment_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -19,5 +20,9 @@ class AppRouter extends _$AppRouter {
           path: SearchScreen.path,
           page: SearchRoute.page,
         ),
+           AutoRoute(
+             path: SentimentPage.path,
+             page: SentimentRoute.page,
+           ),
       ];
 }

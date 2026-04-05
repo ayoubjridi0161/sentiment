@@ -6,5 +6,20 @@
   "startTypingToSearch": "खोजने के लिए टाइप करना प्रारंभ करें",
   "searchResultsAppearHere": "खोज परिणाम यहां दिखाई देते हैं...",
   "noResultsFound": "कोई परिणाम नहीं मिला...",
-  "dynamicTheme": "डायनामिक थीम"
+  "dynamicTheme": "डायनामिक थीम",
+  "emotion": {
+    "input_label": "आपके मन में क्या है?",
+    "input_hint": "भावना विश्लेषण के लिए पाठ दर्ज करें...",
+    "analyze_button": "भावना विश्लेषण करें",
+    "confidence_label": "विश्वास स्कोर",
+    "analyzed_text_label": "विश्लेषण किया गया पाठ",
+    "datetime_format": "dd MMM, yyyy - hh:mm a",
+    "history_title": "विश्लेषण इतिहास",
+    "history_empty": "अभी कोई विश्लेषण इतिहास नहीं",
+    "clear_history_tooltip": "सभी इतिहास साफ करें",
+    "clear_button": "साफ करें",
+    "cancel_button": "रद्द करें",
+    "confirm_clear_title": "इतिहास साफ करें?",
+    "confirm_clear_message": "यह आपके सभी भावना विश्लेषण इतिहास को हटा देगा। यह क्रिया पूर्ववत नहीं की जा सकती।"
+  }
 }

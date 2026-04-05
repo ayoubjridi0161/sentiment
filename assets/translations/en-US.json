@@ -6,5 +6,20 @@
   "startTypingToSearch": "Start typing to search",
   "searchResultsAppearHere": "Search results appear here...",
   "noResultsFound": "No results found...",
-  "dynamicTheme": "Dynamic Theme"
+  "dynamicTheme": "Dynamic Theme",
+  "emotion": {
+    "input_label": "What's on your mind?",
+    "input_hint": "Enter text to analyze sentiment...",
+    "analyze_button": "Analyze Sentiment",
+    "confidence_label": "Confidence Score",
+    "analyzed_text_label": "Analyzed Text",
+    "datetime_format": "MMM dd, yyyy - hh:mm a",
+    "history_title": "Analysis History",
+    "history_empty": "No analysis history yet",
+    "clear_history_tooltip": "Clear all history",
+    "clear_button": "Clear",
+    "cancel_button": "Cancel",
+    "confirm_clear_title": "Clear History?",
+    "confirm_clear_message": "This will delete all your sentiment analysis history. This action cannot be undone."
+  }
 }

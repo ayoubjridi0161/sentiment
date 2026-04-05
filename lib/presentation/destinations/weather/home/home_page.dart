@@ -8,6 +8,7 @@ import 'package:flutter_template/presentation/destinations/weather/home/home_scr
 import 'package:flutter_template/presentation/destinations/weather/home/home_screen_intent.dart';
 import 'package:flutter_template/presentation/destinations/weather/home/home_screen_state.dart';
 import 'package:flutter_template/presentation/destinations/weather/home/home_view_model.dart';
+import 'package:auto_route/auto_route.dart';
 
 import 'widgets/home_page_body/home_page_body.dart';
 
@@ -37,6 +38,13 @@ class HomePage extends ConsumerWidget {
           },
           icon: const Icon(Icons.language),
         ),
+           IconButton(
+             onPressed: () {
+               context.router.pushNamed('/sentiment');
+             },
+             icon: const Icon(Icons.sentiment_satisfied),
+             tooltip: 'Sentiment Analyzer',
+           ),
         IconButton(
           onPressed: () {
             final viewModel = ref.watch(homeViewModelProvider.notifier);

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_template/domain/di/domain_module.dart';
 import 'package:flutter_template/foundation/logger/logger.dart';
+import 'package:flutter_template/foundation/platform/platform_utils.dart';
 import 'package:flutter_template/interactor/di/interactor_module.dart';
 import 'package:flutter_template/navigation/di/navigation_module.dart';
 import 'package:flutter_template/presentation/di/presentation_module.dart';
@@ -28,11 +27,17 @@ void startApp() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale("en", "US"), Locale("hi", "IN")],
+      supportedLocales: const [
+        Locale("en", "US"),
+        Locale("hi", "IN"),
+        Locale("ar", "SA"),
+      ],
       path: "assets/translations",
       fallbackLocale: const Locale("en", "US"),
       assetLoader: const CodegenLoader(),
-      child: TemplateApp(),
+      child: TemplateApp(
+        sharedPreferences: GetIt.I<SharedPreferences>(),
+      ),
     ),
   );
 }
@@ -52,7 +57,7 @@ Future initialiseApp({bool test = false}) async {
 
   EasyLocalization.logger.printer = customEasyLogger;
 
-  if (!kIsWeb && Platform.isAndroid) {
+  if (isAndroidPlatform) {
     try {
       FlutterDisplayMode.setHighRefreshRate();
     } on PlatformException catch (exception) {

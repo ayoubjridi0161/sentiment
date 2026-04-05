@@ -6,6 +6,7 @@ import 'package:flutter_template/flavors/flavor_config.dart';
 import 'package:flutter_template/presentation/intl/translations/translation_loader.dart';
 import 'package:flutter_template/presentation/template_app.dart';
 import 'package:patrol/patrol.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future setupApp(PatrolIntegrationTester patrol) async {
   await dotenv.load(
@@ -18,11 +19,17 @@ Future setupApp(PatrolIntegrationTester patrol) async {
 
   await patrol.pumpWidgetAndSettle(
     EasyLocalization(
-      supportedLocales: const [Locale("en", "US"), Locale("hi", "IN")],
+      supportedLocales: const [
+        Locale("en", "US"),
+        Locale("hi", "IN"),
+        Locale("ar", "SA"),
+      ],
       path: "assets/translations",
       fallbackLocale: const Locale("en", "US"),
       assetLoader: const CodegenLoader(),
-      child: TemplateApp(),
+      child: TemplateApp(
+        sharedPreferences: await SharedPreferences.getInstance(),
+      ),
     ),
   );
 }
