@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_template/data/datasource/hugging_face_remote_data_source.dart';
+import 'package:flutter_template/data/datasource/assembly_ai_remote_data_source.dart';
 import 'package:flutter_template/data/repository/sentiment_repository_impl.dart';
 import 'package:flutter_template/domain/repository/sentiment_repository.dart';
 import 'package:flutter_template/domain/use_case/analyze_sentiment_use_case.dart';
@@ -17,16 +17,16 @@ final dioProvider = Provider<Dio>((ref) {
 });
 
 // Remote data source provider
-final huggingFaceRemoteDataSourceProvider =
-    Provider<HuggingFaceRemoteDataSource>((ref) {
+final apiNinjasRemoteDataSourceProvider =
+    Provider<ApiNinjasRemoteDataSource>((ref) {
   final dio = ref.watch(dioProvider);
-  return HuggingFaceRemoteDataSource(dio: dio);
+  return ApiNinjasRemoteDataSource(dio: dio);
 });
 
 // Repository provider
 final sentimentRepositoryProvider = Provider<SentimentRepository>((ref) {
   final remoteDataSource =
-      ref.watch(huggingFaceRemoteDataSourceProvider);
+      ref.watch(apiNinjasRemoteDataSourceProvider);
   final preferences = ref.watch(sharedPreferencesProvider);
   return SentimentRepositoryImpl(
     remoteDataSource: remoteDataSource,

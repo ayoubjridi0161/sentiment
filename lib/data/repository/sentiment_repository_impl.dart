@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter_template/data/datasource/hugging_face_remote_data_source.dart';
+import 'package:flutter_template/data/datasource/assembly_ai_remote_data_source.dart';
 import 'package:flutter_template/domain/entity/sentiment_result.dart';
 import 'package:flutter_template/domain/repository/sentiment_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 class SentimentRepositoryImpl implements SentimentRepository {
-  final HuggingFaceRemoteDataSource remoteDataSource;
+  final ApiNinjasRemoteDataSource remoteDataSource;
   final SharedPreferences preferences;
 
   static const String _historyKey = 'sentiment_history';

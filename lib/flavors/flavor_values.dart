@@ -5,7 +5,6 @@ class FlavorValues {
   final String apiBaseUrl;
   final bool useFakeData;
   final bool showLogs;
-  final String openWeatherApiKey;
   final bool useGoogleFonts;
   final bool renderFontsInTest;
 
@@ -13,7 +12,6 @@ class FlavorValues {
 
   const FlavorValues({
     required this.apiBaseUrl,
-    required this.openWeatherApiKey,
     logSqlStatements = false,
     this.showLogs = false,
     this.useFakeData = false,
@@ -25,8 +23,7 @@ class FlavorValues {
 
   static FlavorValues fromEnvironment() {
     return FlavorValues(
-        apiBaseUrl: dotenv.get("OPEN_WEATHER_BASE_URL"),
-        openWeatherApiKey: dotenv.get("OPEN_WEATHER_API_KEY"),
+        apiBaseUrl: dotenv.get("HUGGING_FACE_BASE_URL"),
         showLogs: dotenv.getBoolOrDefault("SHOW_LOGS", fallback: false),
         logSqlStatements: dotenv.getBoolOrDefault("LOG_SQL", fallback: false),
         useGoogleFonts:
